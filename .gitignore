@@ -1,0 +1,6 @@
+
+# Ignore build generated files
+build
+.waf-*/
+.lock-waf*
+appstore/
