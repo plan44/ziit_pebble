@@ -4,7 +4,7 @@
   "longName": "Ziit - Swiss German Text Watch",
   "companyName": "plan44.ch",
   "versionCode": 2,
-  "versionLabel": "2.1.0",
+  "versionLabel": "2.2",
   "watchapp": {
     "watchface": true
   },
@@ -18,5 +18,11 @@
         "file": "images/menu_icon_ziit_watch.png"
       }
     ]
-  }
+  },
+  "targetPlatforms": [
+    "aplite",
+    "basalt",
+    "chalk"
+  ],
+  "sdkVersion": "3"
 }

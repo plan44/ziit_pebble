@@ -106,7 +106,13 @@ char ziit_str_buffer[ZIIT_STR_BUFFER_BYTES];
 // Geometry constants
 #define TEXT_LAYER_MINMARGIN 9
 #define TEXT_LAYER_EXTRAMARGIN_H 17
+#ifdef PBL_ROUND
+#define DOT_MARGIN 10
+#define TEXT_SHIFTDOWN 15
+#else
 #define DOT_MARGIN 5
+#define TEXT_SHIFTDOWN 0
+#endif
 #define DOT_RADIUS 4
 
 
@@ -180,7 +186,7 @@ void init()
   // - centered square
   tf.origin.x += TEXT_LAYER_MINMARGIN;
   tf.size.w -= 2*TEXT_LAYER_MINMARGIN;
-  tf.origin.y += (tf.size.h-tf.size.w) / 2 + TEXT_LAYER_EXTRAMARGIN_H;
+  tf.origin.y += (tf.size.h-tf.size.w) / 2 + TEXT_LAYER_EXTRAMARGIN_H + TEXT_SHIFTDOWN;
   tf.size.h = tf.size.w - 2*TEXT_LAYER_EXTRAMARGIN_H;
   ziit_display_textlayer = text_layer_create(tf);
   // - parameters
@@ -195,6 +201,8 @@ void init()
 
   // the layer for displaying the seconds dot
   second_display_layer = layer_create(wf);
+  #ifdef PBL_ROUND
+  #endif
   layer_set_update_proc(second_display_layer, &second_display_layer_callback);
   layer_add_child(window_get_root_layer(window), second_display_layer);
   layer_mark_dirty(second_display_layer); // draw immediately
